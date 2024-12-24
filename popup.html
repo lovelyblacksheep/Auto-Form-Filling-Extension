@@ -1,0 +1,15 @@
+document.getElementById('autoFillForm').addEventListener('submit', (event) => {
+    event.preventDefault();
+    
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const redirectUrl = 'https://www.yetiaffiliates.com/redirector?url=https://www.yeticasino.com/en/register&trackerId=6601c4529eb172715e0a2ac9'; // Replace with dynamic URL if needed
+  
+    chrome.storage.local.set({ email, phone }, () => {
+      chrome.runtime.sendMessage({
+        action: 'redirect',
+        url: redirectUrl
+      });
+    });
+  });
+  
